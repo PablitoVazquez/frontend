@@ -1,0 +1,14 @@
+.about-us {
+    padding: 40px 0;
+  }
+  
+  .about-us h1,
+  .about-us h2 {
+    color: #007bff;
+  }
+  
+  .card img {
+    height: 250px;
+    object-fit: cover;
+  }
+  

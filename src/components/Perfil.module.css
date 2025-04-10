@@ -1,0 +1,52 @@
+.container {
+  width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.cardHeader {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cardBody {
+  padding: 15px;
+}
+
+.cardBody p {
+  margin: 5px 0;
+}
+
+.reservaItem {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  background-color: #fdfdfd;
+  border: 1px solid #eee;
+  list-style: none;
+}
+
+.profileTitle {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  color: #666;
+}

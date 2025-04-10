@@ -1,0 +1,194 @@
+.reservas-container {
+    padding: 20px;
+  }
+  
+  .excursiones-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .excursion-card {
+    width: 300px;
+    border-radius: 8px;
+  }
+  
+  .excursion-card img {
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .excursion-card .card-body {
+    text-align: center;
+  }
+  
+  .excursion-card ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .excursion-card li {
+    margin-bottom: 5px;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+  }
+  .reserva-container {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+  }
+  
+  .reserva-titulo {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .reserva-horas {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+  
+  .reserva-horas label {
+    font-weight: bold;
+  }
+  
+  .reserva-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .reserva-boton {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #ff2b7a;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .reserva-boton:hover {
+    background-color: #e5216a;
+  }
+  
+  .reserva-error {
+    color: red;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Estilos para la sección de cantidad de adultos y niños */
+.cantidad-container {
+  margin: 20px 0;
+}
+
+.cantidad-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cantidad-boton {
+  padding: 5px 15px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cantidad-boton:hover {
+  background-color: #0056b3;
+}
+
+.cantidad-boton:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
+.reserva-input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.reserva-boton {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reserva-boton:hover {
+  background-color: #218838;
+}
+
+.reserva-error {
+  color: red;
+  margin-top: 10px;
+}
+/* ================== CERRAR BOTÓN (X) ================== */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #dc3545; /* Rojo al pasar el mouse */
+}
+
+/* ================== ESTILOS GENERALES DEL MODAL ================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
