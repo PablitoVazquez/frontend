@@ -28,21 +28,6 @@ const Navbar: React.FC = () => {
                 Excursiones
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link text-white fw-semibold" to="/a/reservas">
-                Reservas
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-white fw-semibold" to="/a/usuarios">
-                Registrar Usuarios
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-white fw-semibold" to="/a/clientes">
-                Usuarios
-              </Link>
-            </li>
           </ul>
         </div>
 

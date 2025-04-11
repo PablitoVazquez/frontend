@@ -80,7 +80,7 @@ const Excursiones: React.FC = () => {
 
   const fetchExcursiones = async () => {
     try {
-      const data = await genericRequest('/api/excursiones', 'GET');
+      const data = await genericRequest('/api/excursiones', 'GET',null,true);
       setExcursiones(data);
       setAllExcursiones(data); // copia para búsqueda
     } catch {
