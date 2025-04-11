@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, onSave, formData, onChang
             ['cupos_disponibles', 'Cupos Disponibles'],
             ['fecha_salida', 'Fecha Salida'],
             ['fecha_regreso', 'Fecha Regreso'],
-            ['imagen_url', 'Imagen (URL)']
+            ['img_excursion', 'Imagen (URL)']
           ].map(([key, label]) => (
             <div className="mb-3" key={key}>
               <label className="form-label">{label}</label>
@@ -44,9 +44,9 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, onSave, formData, onChang
               />
             </div>
           ))}
-          {formData.imagen_url && (
+          {formData.img_excursion && (
             <div className="mb-3 text-center">
-              <img src={formData.imagen_url} alt="Vista previa" className="img-fluid rounded" style={{ maxHeight: '200px' }} />
+              <img src={formData.img_excursion} alt="Vista previa" className="img-fluid rounded" style={{ maxHeight: '200px' }} />
             </div>
           )}
         </div>
@@ -75,7 +75,7 @@ const Excursiones: React.FC = () => {
     cupos_disponibles: 0,
     fecha_salida: '',
     fecha_regreso: '',
-    imagen_url: ''
+    img_excursion: ''
   });
 
   const fetchExcursiones = async () => {
@@ -134,16 +134,21 @@ const Excursiones: React.FC = () => {
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name.includes('precio') || name.includes('capacidad') || name.includes('cupos') ? Number(value) : value
-    });
+
+    // Verifica si el campo es un número o texto para ajustar el tipo de dato
+    const updatedValue = name.includes('precio') || name.includes('capacidad') || name.includes('cupos') ? 
+                          Number(value) : value;
+
+    setFormData(prev => ({
+      ...prev,
+      [name]: updatedValue
+    }));
   };
 
   return (
     <div>
       <Navbar />
-      <div className="container mt-5">
+      <div className="container mt-5 pt-5">
         <h1 className="text-primary text-center mb-4">Excursiones</h1>
 
         <div className="mb-4 d-flex justify-content-center gap-2">
@@ -167,9 +172,8 @@ const Excursiones: React.FC = () => {
               cupos_disponibles: 0,
               fecha_salida: '',
               fecha_regreso: '',
-              imagen_url: ''
+              img_excursion: ''
             };
-            console.log(empty);
             setFormData(empty);
             setModalData(empty);
           }}>+ Nueva Excursión</button>
@@ -179,7 +183,7 @@ const Excursiones: React.FC = () => {
           {excursiones.map((e) => (
             <div className="col-md-6 col-lg-4 mb-4" key={e.id_excursion}>
               <div className="card shadow-sm h-100">
-                {e.imagen_url && <img src={e.imagen_url} className="card-img-top" alt={e.nombre} />}
+                {e.img_excursion && <img src={e.img_excursion} className="card-img-top" alt={e.nombre} />}
                 <div className="card-body">
                   <h5 className="card-title text-primary">{e.nombre}</h5>
                   <h6 className="card-subtitle mb-2 text-muted">{e.destino}</h6>
@@ -191,7 +195,7 @@ const Excursiones: React.FC = () => {
                     <li className="list-group-item">Cupos disponibles: {e.cupos_disponibles}</li>
                     <li className="list-group-item">Salida: {e.fecha_salida}</li>
                     <li className="list-group-item">Regreso: {e.fecha_regreso}</li>
-                    <li className="list-group-item">URL: {e.imagen_url}</li>
+                    <li className="list-group-item">URL: {e.img_excursion}</li>
                   </ul>
                   <div className="d-flex justify-content-between">
                     <button className="btn btn-sm btn-warning" onClick={() => {

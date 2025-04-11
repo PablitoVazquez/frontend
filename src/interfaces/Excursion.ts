@@ -1,4 +1,4 @@
-export interface Excursion{
+export interface Excursion {
     id_excursion: number;
     nombre: string;
     descripcion: string;
@@ -9,5 +9,6 @@ export interface Excursion{
     cupos_disponibles: number;
     fecha_salida: string;
     fecha_regreso: string;
-    imagen_url: string;
-}
+    img_excursion: string;
+  }
+  
