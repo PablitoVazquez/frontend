@@ -1,11 +1,9 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './pinicio.css'
-import App from './pinicio.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Router from "./adrouter"; // el archivo que me compartiste
 
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <Router />
+  </React.StrictMode>
+);
