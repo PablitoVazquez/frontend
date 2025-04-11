@@ -1,35 +1,84 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Para manejar el estado de autenticación
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3000/login', {  // Esta es la URL de tu backend
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo: username, contrasena: password }), // 'username' y 'password' son del estado
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Almacenamos el token JWT en localStorage
+        localStorage.setItem('token', data.token);
+        setIsAuthenticated(true); // Cambiamos el estado de autenticación
+        setErrorMessage('');
+      } else {
+        setErrorMessage(data.message || 'Error en el inicio de sesión');
+      }
+    } catch (error) {
+      setErrorMessage('Error en la conexión al servidor');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');  // Eliminamos el token del almacenamiento
+    setIsAuthenticated(false);  // Cambiamos el estado de autenticación
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {!isAuthenticated ? (
+        <form onSubmit={handleLogin}>
+          <label htmlFor="username">Usuario:</label>
+          <br />
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <br /><br />
+          <label htmlFor="password">Contraseña:</label>
+          <br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br /><br />
+          <button type="submit">Iniciar sesión</button>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        </form>
+      ) : (
+        <div>
+          <h1>Bienvenido, {username}!</h1>
+          <button onClick={handleLogout}>Cerrar sesión</button>
+        </div>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+
+//sdfasd
